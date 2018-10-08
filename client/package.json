@@ -63,6 +63,7 @@
     "karma-webpack": "^2.0.6",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "^0.4.3",
     "mocha": "^5.2.0",
     "mocha-test-container-support": "0.2.0",
     "npm-run-all": "^4.1.3",

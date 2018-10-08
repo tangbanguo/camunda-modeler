@@ -2,6 +2,8 @@
 
 const DEV = process.env.NODE_ENV === 'development';
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -36,14 +38,14 @@ module.exports = {
           {
             test: /\.css$/,
             use: [
-              'style-loader',
+              DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
               cssLoader()
             ]
           },
           {
             test: /\.less$/,
             use: [
-              'style-loader',
+              DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
               cssLoader(),
               'less-loader'
             ]
@@ -67,7 +69,8 @@ module.exports = {
         from: './public',
         transform: DEV && applyDevCSP
       }
-    ])
+    ]),
+    new MiniCssExtractPlugin()
   ],
   // don't bundle shims for node globals
   node: {
