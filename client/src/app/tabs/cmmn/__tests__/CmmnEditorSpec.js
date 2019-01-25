@@ -234,13 +234,15 @@ describe('<CmmnEditor>', function() {
         cached: {
           lastXML: diagramXML,
           modeler: new CmmnModeler({
-            commandStack: {
-              canRedo: () => true,
-              canUndo: () => true,
-              _stackIdx: 1
-            },
-            selection: {
-              get: () => []
+            modules: {
+              commandStack: {
+                canRedo: () => true,
+                canUndo: () => true,
+                _stackIdx: 1
+              },
+              selection: {
+                get: () => []
+              }
             }
           }),
           stackIdx: 2
@@ -565,8 +567,10 @@ describe('<CmmnEditor>', function() {
       cache.add('editor', {
         cached: {
           modeler: new CmmnModeler({
-            eventBus: eventBusStub,
-            canvas: canvasStub
+            modules: {
+              eventBus: eventBusStub,
+              canvas: canvasStub
+            }
           })
         }
       });
