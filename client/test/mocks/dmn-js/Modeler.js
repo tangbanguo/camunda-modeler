@@ -60,7 +60,8 @@ class Viewer {
       selection: {
         get() {
           return [];
-        }
+        },
+        hasSelection() {}
       },
       sheet: {
         resized() {}
